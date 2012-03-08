@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="main-service">
-    <global-unknown entity-id="4429172b-6209-4287-b6ff-d02134d2985c">
+    <global-unknown entity-id="e632f3c0-db4e-408e-a57a-fe47e71e1157">
         <content>&lt;notifications xmlns=&quot;http://www.mulesoft.org/schema/mule/core&quot;&gt;  
         &lt;notification event=&quot;CONTEXT&quot;/&gt;  
         &lt;notification-listener ref=&quot;SetupDatabaseNotificationListener&quot;/&gt; 
     &lt;/notifications&gt;</content>
     </global-unknown>
-    <global-element type="http://www.mulesoft.org/schema/mule/json/json-to-object-transformer" name="JSON to Object" entity-id="7ed25d74-360e-4385-bf3b-2c7a133d3dbc">
+    <global-element type="http://www.mulesoft.org/schema/mule/json/json-to-object-transformer" name="JSON to Object" entity-id="fe7021cb-9d4a-49cc-b208-9a2579b56108">
         <properties>
             <property value="java.util.Map" name="returnClass"/>
             <property name="ignoreBadInput"/>
@@ -16,21 +16,22 @@
             <property value="JSON_to_Object" name="name"/>
         </properties>
     </global-element>
-    <global-element type="http://www.mulesoft.org/schema/mule/jms/activemq-xa-connector" name="Active MQ" entity-id="bfac832d-6f33-446b-8502-482492b68ea4">
+    <global-element type="http://www.mulesoft.org/schema/mule/jms/activemq-xa-connector" name="Active MQ" entity-id="d2249792-1d2e-4b97-9726-be446ec7ca19">
         <properties>
             <property value="Active_MQ" name="name"/>
             <property value="1.1" name="specification"/>
             <property name="username"/>
             <property name="password"/>
+            <property value="vm://localhost:61616" name="brokerURL"/>
+            <property name="dispatcherPoolFactory-ref"/>
+            <property name="dynamicNotification"/>
+            <property value="true" name="validateConnections"/>
             <property name="jndiInitialFactory"/>
             <property name="jndiProviderUrl"/>
             <property name="connectionFactoryJndiName"/>
             <property name="jndiProviderProperties-ref"/>
             <property name="jndiDestinations"/>
             <property name="forceJndiDestinations"/>
-            <property name="dispatcherPoolFactory-ref"/>
-            <property name="dynamicNotification"/>
-            <property value="true" name="validateConnections"/>
             <property name="acknowledgementMode"/>
             <property name="clientId"/>
             <property name="maxRedelivery"/>
@@ -45,21 +46,21 @@
             <property name="disableTemporaryReplyToDestinations"/>
             <property name="embeddedMode"/>
             <property name="connectionFactory-ref"/>
-            <property value="vm://localhost:61616" name="brokerURL"/>
             <property value="http://www.mulesoft.org/schema/mule/jms/activemq-connector" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
             <property value="Active_MQ" name="name"/>
             <property value="1.1" name="specification"/>
             <property name="username"/>
             <property name="password"/>
+            <property value="vm://localhost:61616" name="brokerURL"/>
+            <property name="dispatcherPoolFactory-ref"/>
+            <property name="dynamicNotification"/>
+            <property value="true" name="validateConnections"/>
             <property name="jndiInitialFactory"/>
             <property name="jndiProviderUrl"/>
             <property name="connectionFactoryJndiName"/>
             <property name="jndiProviderProperties-ref"/>
             <property name="jndiDestinations"/>
             <property name="forceJndiDestinations"/>
-            <property name="dispatcherPoolFactory-ref"/>
-            <property name="dynamicNotification"/>
-            <property value="true" name="validateConnections"/>
             <property name="acknowledgementMode"/>
             <property name="clientId"/>
             <property name="maxRedelivery"/>
@@ -74,10 +75,9 @@
             <property name="disableTemporaryReplyToDestinations"/>
             <property name="embeddedMode"/>
             <property name="connectionFactory-ref"/>
-            <property value="vm://localhost:61616" name="brokerURL"/>
         </properties>
     </global-element>
-    <global-element type="http://www.mulesoft.org/schema/mule/core/object-to-string-transformer" name="Object to String" entity-id="dcbcd9ad-fbc5-4338-a633-7e4e78918eda">
+    <global-element type="http://www.mulesoft.org/schema/mule/core/object-to-string-transformer" name="Object to String" entity-id="bf88eadb-ff6f-4599-8df4-d4dfb4ea1397">
         <properties>
             <property name="returnClass"/>
             <property name="ignoreBadInput"/>
@@ -86,11 +86,11 @@
             <property value="Object_to_String" name="name"/>
         </properties>
     </global-element>
-    <global-element type="org.mule.tooling.ui.modules.core.global.jdbcConnector" name="JDBC" entity-id="eb9e3970-40f2-4ec4-adb4-c849de60be15">
+    <global-element type="org.mule.tooling.ui.modules.core.global.jdbcConnector" name="JDBC" entity-id="4de443d4-d1c1-4818-bc49-fe0bca1fa1a1">
         <properties>
             <property value="JDBC" name="name"/>
-            <property value="DataBeanDerby" name="dataSource-ref to Bean"/>
             <property value="DataBeanDerby" name="dataSource-ref to JDBC DataSource"/>
+            <property value="DataBeanDerby" name="dataSource-ref to Bean"/>
             <property name="dispatcherPoolFactory-ref"/>
             <property name="queryRunner-ref"/>
             <property name="resultSetHandler-ref"/>
@@ -105,7 +105,7 @@
             </property-collection>
         </properties>
     </global-element>
-    <global-element type="http://www.springframework.org/schema/beans/bean" name="Bean" entity-id="9aa25c89-133f-4083-8a76-fd5bab5ebbaf">
+    <global-element type="http://www.springframework.org/schema/beans/bean" name="Bean" entity-id="65c99784-ca07-4737-9b16-f42ec3dbe1e7">
         <properties>
             <property value="SetupDatabaseNotificationListener" name="id"/>
             <property value="org.mulesoft.test.db.SetupDatabaseNotificationListener" name="class"/>
@@ -123,7 +123,7 @@
             <property name="factory-bean"/>
         </properties>
     </global-element>
-    <global-element type="http://www.springframework.org/schema/beans/bean" name="Bean" entity-id="1c433353-a177-4558-bfe2-e15c9b2eb779">
+    <global-element type="http://www.springframework.org/schema/beans/bean" name="Bean" entity-id="9a51ba3d-024c-4315-83c9-40cf59a15a5a">
         <properties>
             <property value="activeMqConnectionFactory" name="id"/>
             <property value="org.apache.activemq.ActiveMQConnectionFactory" name="class"/>
@@ -141,7 +141,7 @@
             <property name="factory-bean"/>
         </properties>
     </global-element>
-    <global-element type="http://www.springframework.org/schema/beans/bean" name="Bean" entity-id="a19a07de-2c39-437e-bab9-54afafe81ab8">
+    <global-element type="http://www.springframework.org/schema/beans/bean" name="Bean" entity-id="84ba61c2-b3f3-400e-aaa8-0db926845274">
         <properties>
             <property value="DataBean" name="id"/>
             <property value="DataBean" name="name"/>
@@ -168,7 +168,7 @@
             </property-collection>
         </properties>
     </global-element>
-    <global-element type="http://www.springframework.org/schema/beans/bean" name="DerbyBean" entity-id="b7c28b1a-785c-4ca1-952d-6863e6127af9">
+    <global-element type="http://www.springframework.org/schema/beans/bean" name="DerbyBean" entity-id="c51239de-5d48-4ff2-bc59-9eb846dc3c81">
         <properties>
             <property value="DataBeanDerby" name="id"/>
             <property value="DataBeanDerby" name="name"/>
@@ -195,19 +195,18 @@
             </property-collection>
         </properties>
     </global-element>
-    <flow SubFlow="false" name="CompositeLoanService">
+    <flow SubFlow="false" name="ESB_BankLoanApplication_Process">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
         </properties>
-        <lane entity-id="87c8ccb2-9cd5-4aa3-91f3-e819fa6f0e8b">
-            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="f5050f56-29d5-4984-b561-89afbd83ae31">
+        <lane entity-id="a4cadd06-0dc7-4a46-8a02-cb39f138ccd4">
+            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="e97c977b-7860-4cfd-9fac-9f41931381c8">
                 <properties>
                     <property value="one-way" name="exchange-pattern"/>
                     <property value="request-response" name="exchange-pattern"/>
                     <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
-                    <property name="Enabling HTTPS will require configuring a HTTPS Connector"/>
-                    <property name=""/>
+                    <property name="httpLabel"/>
                     <property value="localhost" name="host"/>
                     <property value="8881" name="port"/>
                     <property value="loan/loanrequest" name="path"/>
@@ -228,7 +227,7 @@
                     <property name="keep-alive"/>
                 </properties>
             </endpoint>
-            <pattern type="http://www.mulesoft.org/schema/mule/cxf/soapComponent" name="SOAP" entity-id="6df5a694-e458-46d1-92d0-50db79c99856">
+            <pattern type="http://www.mulesoft.org/schema/mule/cxf/soapComponent" name="SOAP" entity-id="38083250-3ecf-4f87-a17f-89a32bdaf918">
                 <properties>
                     <property name="configuration-ref"/>
                     <property value="http://www.mulesoft.org/schema/mule/cxf/jaxws-service" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
@@ -244,7 +243,7 @@
                     <property name="enableMuleSoapHeaders"/>
                 </properties>
             </pattern>
-            <scope type="org.mule.tooling.ui.modules.core.scope.enricher" name="Message Enricher" entity-id="28f61136-d4b8-492b-837c-b8f266c5c485">
+            <scope type="org.mule.tooling.ui.modules.core.scope.enricher" name="Credit Status Service" entity-id="6c264327-d4b8-41aa-8b85-d9b6a025554f">
                 <properties>
                     <property name="source"/>
                     <property name="target"/>
@@ -253,15 +252,14 @@
                         <property value="#[variable:creditRating]" name="target"/>
                     </property-collection>
                 </properties>
-                <compartment entity-id="181a50d1-d23e-4556-b221-75ec76eb3c11">
-                    <lane entity-id="8558750a-f05b-44e1-a87b-e0c0dc062b2b">
-                        <endpoint message-exchange-pattern="OneWay" direction="Outbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTPService" entity-id="8a54f47d-bdd7-43e4-9f6f-75ff939749ca">
+                <compartment entity-id="51f4a340-0c8e-40c0-b455-044bc7074766">
+                    <lane entity-id="eba17ba1-c85f-4616-8dc7-cfc107ca6dce">
+                        <endpoint message-exchange-pattern="OneWay" direction="Outbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="Credit Status Check" entity-id="aa0f3837-5a17-4396-aa8e-b3dc43c3ddf2">
                             <properties>
 <property value="one-way" name="exchange-pattern"/>
 <property value="request-response" name="exchange-pattern"/>
 <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
-<property name="Enabling HTTPS will require configuring a HTTPS Connector"/>
-<property name=""/>
+<property name="httpLabel"/>
 <property value="localhost" name="host"/>
 <property value="8882" name="port"/>
 <property value="creditcheck/#[groovy: payload.customerId]" name="path"/>
@@ -285,14 +283,14 @@
                     </lane>
                 </compartment>
             </scope>
-            <scope type="org.mule.tooling.ui.modules.core.scope.enricher" name="Message Enricher" entity-id="cbafb8b8-a33f-4ad5-8464-b968f261643b">
+            <scope type="org.mule.tooling.ui.modules.core.scope.enricher" name="Interest Rate Service" entity-id="ffb80cb7-d84d-41ba-8d3b-a66ddd2d12e9">
                 <properties>
                     <property value="#[xpath:/linked-hash-map/entry/double]" name="source"/>
                     <property value="#[variable:rate]" name="target"/>
                 </properties>
-                <compartment entity-id="c78a8b2b-d8a4-4ad4-a970-7654a59e1899">
-                    <lane entity-id="87e307d9-0ab0-4da9-88de-2479d59b065f">
-                        <endpoint message-exchange-pattern="OneWay" direction="Outbound" type="http://www.mulesoft.org/schema/mule/jms/endpoint" name="JMS" entity-id="0c251503-de90-4b8f-9d17-64b5b710a892">
+                <compartment entity-id="81af02f1-a1d2-45cd-9755-a258198600a5">
+                    <lane entity-id="f2c6a95a-ec02-49a5-975b-47580eba6e64">
+                        <endpoint message-exchange-pattern="OneWay" direction="Outbound" type="http://www.mulesoft.org/schema/mule/jms/endpoint" name="Retrieve Interest Rate" entity-id="489aea26-4678-4f70-81f0-0dd9aa8d3f1f">
                             <properties>
 <property value="one-way" name="exchange-pattern"/>
 <property value="interest.rate.in" name="queue"/>
@@ -314,7 +312,7 @@
                     </lane>
                 </compartment>
             </scope>
-            <endpoint message-exchange-pattern="OneWay" direction="Outbound" type="http://www.mulesoft.org/schema/mule/jdbc/endpoint" name="JDBC" entity-id="6ec127db-9e34-4fb3-b500-03569f03a5c8">
+            <endpoint message-exchange-pattern="OneWay" direction="Outbound" type="http://www.mulesoft.org/schema/mule/jdbc/endpoint" name="Data Warehouse - Store" entity-id="3863fb2c-7681-4c8f-9804-d46a1676bae2">
                 <properties>
                     <property value="one-way" name="exchange-pattern"/>
                     <property value="request-response" name="exchange-pattern"/>
@@ -332,7 +330,7 @@
                     <property name="responseTransformer-refs"/>
                 </properties>
             </endpoint>
-            <pattern type="http://www.mulesoft.org/schema/mule/scripting/groovyTransformer" name="Groovy" entity-id="c253276d-52f1-41f4-87c2-43bfbcfe2d95">
+            <pattern type="http://www.mulesoft.org/schema/mule/scripting/groovyTransformer" name="Calculate Response" entity-id="1678a003-9ad6-431e-8a53-e39e3e286629">
                 <properties>
                     <property name="returnClass"/>
                     <property name="ignoreBadInput"/>
@@ -348,36 +346,16 @@
     </flow>
     <flow SubFlow="false" name="HTTPCreditRatingService">
         <properties>
-            <property value="false" name="stopMessageProcessing"/>
-            <property value="" name="name"/>
-            <property value="true" name="enableNotifications"/>
-            <property value="" name="processingStrategy2"/>
-            <property value="" name="exception-pattern"/>
-            <property-collection name="@http://www.mulesoft.org/schema/mule/core/default-exception-strategy;749550947">
-                <property value="false" name="stopMessageProcessing"/>
-                <property value="" name="name"/>
-                <property value="true" name="enableNotifications"/>
-                <property value="" name="exception-pattern"/>
-                <property-collection name="@http://www.mulesoft.org/schema/mule/core/flow-ref;1353545774">
-                    <property value="" name="name"/>
-                </property-collection>
-                <property-collection name="@http://www.mulesoft.org/schema/mule/core/commit-transaction;1873666443">
-                    <property value="" name="exception-pattern"/>
-                </property-collection>
-                <property-collection name="@http://www.mulesoft.org/schema/mule/core/rollback-transaction;11707893">
-                    <property value="" name="exception-pattern"/>
-                </property-collection>
-            </property-collection>
+            <property name="processingStrategy2"/>
+            <property name="processingStrategy"/>
         </properties>
-        <description></description>
-        <lane entity-id="5c2dbce4-1456-4dfd-bbcb-fba8fd41e7c4">
-            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="897e4281-68a8-46b9-a174-504b24bd44a7">
+        <lane entity-id="5e93b6f6-8077-45e0-af97-0b0e36d32efa">
+            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="bcb2c6ca-f791-4751-8c47-103d53a82446">
                 <properties>
                     <property value="one-way" name="exchange-pattern"/>
                     <property value="request-response" name="exchange-pattern"/>
                     <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
-                    <property name="Enabling HTTPS will require configuring a HTTPS Connector"/>
-                    <property name=""/>
+                    <property name="httpLabel"/>
                     <property value="localhost" name="host"/>
                     <property value="8882" name="port"/>
                     <property value="creditcheck" name="path"/>
@@ -398,7 +376,7 @@
                     <property name="keep-alive"/>
                 </properties>
             </endpoint>
-            <pattern type="http://www.mulesoft.org/schema/mule/core/object-to-string-transformer" name="Object to String" entity-id="301ee64b-cc3e-4a52-9335-9d642c36796b">
+            <pattern type="http://www.mulesoft.org/schema/mule/core/object-to-string-transformer" name="Object to String" entity-id="4bd4d051-cea1-4963-b35c-d42bb6883823">
                 <properties>
                     <property name="returnClass"/>
                     <property name="ignoreBadInput"/>
@@ -406,19 +384,19 @@
                     <property name="mimeType"/>
                 </properties>
             </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/scripting/groovyTransformer" name="Groovy" entity-id="93db15b7-d2bf-47d7-b71f-48e8e00bc6ce">
+            <pattern type="http://www.mulesoft.org/schema/mule/scripting/groovyTransformer" name="Simulate Backend Rating System" entity-id="e4a2811f-442c-496b-851b-76a184f5f2c9">
                 <properties>
                     <property name="returnClass"/>
                     <property name="ignoreBadInput"/>
                     <property name="encoding"/>
                     <property name="mimeType"/>
                     <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
-                        <property value="def ran = Math.random()&#xA;if(ran &gt; 0.5){&#xA;&#x9;return ['applicantId':'Test Person', 'creditstatus':'high']&#xA;}else{&#xA;&#x9;return ['applicantId':'Test Person', 'creditstatus':'low']&#xA;}" name="text"/>
+                        <property value="def ran = Math.random()&#xA;&#x9;&#x9;&#x9;&#x9;if(ran &gt; 0.5){&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;return ['applicantId':'Test Person', 'creditstatus':'high']&#xA;&#x9;&#x9;&#x9;&#x9;}else{&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;return ['applicantId':'Test Person', 'creditstatus':'low']&#xA;&#x9;&#x9;&#x9;&#x9;}" name="text"/>
                         <property value="Groovy" name="engine"/>
                     </property-collection>
                 </properties>
             </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/json/object-to-json-transformer" name="Object to JSON" entity-id="a0e5f894-f944-44eb-b47d-327fc0e16b6f">
+            <pattern type="http://www.mulesoft.org/schema/mule/json/object-to-json-transformer" name="Object to JSON" entity-id="10bce58a-47ac-4e98-8a9b-e626e9e3a60c">
                 <properties>
                     <property name="returnClass"/>
                     <property name="ignoreBadInput"/>
@@ -432,30 +410,11 @@
     </flow>
     <flow SubFlow="false" name="JMSRateService">
         <properties>
-            <property value="false" name="stopMessageProcessing"/>
-            <property value="" name="name"/>
-            <property value="true" name="enableNotifications"/>
-            <property value="" name="processingStrategy2"/>
-            <property value="" name="exception-pattern"/>
-            <property-collection name="@http://www.mulesoft.org/schema/mule/core/default-exception-strategy;964088996">
-                <property value="false" name="stopMessageProcessing"/>
-                <property value="" name="name"/>
-                <property value="true" name="enableNotifications"/>
-                <property value="" name="exception-pattern"/>
-                <property-collection name="@http://www.mulesoft.org/schema/mule/core/rollback-transaction;1734718180">
-                    <property value="" name="exception-pattern"/>
-                </property-collection>
-                <property-collection name="@http://www.mulesoft.org/schema/mule/core/flow-ref;1170459588">
-                    <property value="" name="name"/>
-                </property-collection>
-                <property-collection name="@http://www.mulesoft.org/schema/mule/core/commit-transaction;2043068409">
-                    <property value="" name="exception-pattern"/>
-                </property-collection>
-            </property-collection>
+            <property name="processingStrategy2"/>
+            <property name="processingStrategy"/>
         </properties>
-        <description></description>
-        <lane entity-id="55ed29f8-3300-4aca-a655-506968917c3d">
-            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/jms/endpoint" name="JMS" entity-id="f4c2ba8f-9e3a-4f24-af80-bd1e7b3018e9">
+        <lane entity-id="9d37f232-b27b-445b-9344-25f292265333">
+            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/jms/endpoint" name="JMS" entity-id="f23b6517-7e63-4eb0-b148-79a72547b5a1">
                 <properties>
                     <property value="one-way" name="exchange-pattern"/>
                     <property value="interest.rate.in" name="queue"/>
@@ -474,7 +433,7 @@
                     <property name="responseTransformer-refs"/>
                 </properties>
             </endpoint>
-            <pattern type="http://www.mulesoft.org/schema/mule/core/object-to-string-transformer" name="Object to String" entity-id="6140021e-fd8a-4430-88f9-9fce5e0fb4a8">
+            <pattern type="http://www.mulesoft.org/schema/mule/core/object-to-string-transformer" name="Object to String" entity-id="81e1afd0-36c0-4b85-a267-48a24e04c127">
                 <properties>
                     <property name="returnClass"/>
                     <property name="ignoreBadInput"/>
@@ -482,19 +441,19 @@
                     <property name="mimeType"/>
                 </properties>
             </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/scripting/groovyTransformer" name="Groovy" entity-id="2f41612b-8914-45b3-afcd-39b47e8cdb0e">
+            <pattern type="http://www.mulesoft.org/schema/mule/scripting/groovyTransformer" name="Simulate Get Rate" entity-id="b18c5458-de11-4b28-b46a-b4d0d47c0b3e">
                 <properties>
                     <property name="returnClass"/>
                     <property name="ignoreBadInput"/>
                     <property name="encoding"/>
                     <property name="mimeType"/>
                     <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
-                        <property value="def rate = Math.random()&#xA;return ['rate':rate]" name="text"/>
+                        <property value="return ['rate':Math.random()]" name="text"/>
                         <property value="Groovy" name="engine"/>
                     </property-collection>
                 </properties>
             </pattern>
-            <pattern type="org.mule.tooling.ui.modules.core.pattern.objectToXmlTransformer" name="Object to XML" entity-id="e3dfc208-be28-4722-8d62-9ec336f5666c">
+            <pattern type="org.mule.tooling.ui.modules.core.pattern.objectToXmlTransformer" name="Object to XML" entity-id="a3c5fc2e-d35b-4487-8edb-7e5f8f60408d">
                 <properties>
                     <property name="returnClass"/>
                     <property name="ignoreBadInput"/>
